@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATM — 8 İllik Yubiley | Aqrar Tədqiqatlar Mərkəzi</title>
+  <meta name="description" content="Aqrar Tədqiqatlar Mərkəzinin 8 illik yubileyi — Elm, İnnovasiya və İnkişaf" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PROGRESS BAR (auto-play timer) -->
+  <div class="progress-bar-wrap" id="progressBarWrap">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- AUTO-PLAY KONTROL -->
+  <div class="autoplay-ctrl" id="autoplayCtrl">
+    <button class="ap-btn" id="apToggle" title="Auto-play aç/bağla">
+      <span id="apIcon">⏸</span>
+    </button>
+    <div class="ap-timer" id="apTimer">10</div>
+    <a href="admin.html" class="ap-btn ap-admin-btn" title="Admin Panel">⚙</a>
+  </div>
+
+  <!-- NAVİQASİYA NÖQTƏLƏRI -->
+  <nav class="slide-nav" id="slideNav">
+    <div class="nav-dot active" data-slide="0" title="Giriş"></div>
+    <div class="nav-dot" data-slide="1" title="Direktor"></div>
+    <div class="nav-dot" data-slide="2" title="Komanda"></div>
+    <div class="nav-dot" data-slide="3" title="Əməkdaşlar"></div>
+    <div class="nav-dot" data-slide="4" title="Final"></div>
+  </nav>
+
+  <!-- OXLAR -->
+  <button class="arrow arrow-up hidden" id="arrowUp">&#8679;</button>
+  <button class="arrow arrow-down" id="arrowDown">&#8681;</button>
+
+  <!-- SLAYDLAR -->
+  <div class="slides-container" id="slidesContainer">
+
+    <!-- SLAYD 0 — GİRİŞ -->
+    <section class="slide slide-intro" id="slide-0">
+      <div class="intro-bg-overlay"></div>
+      <img src="" alt="ATM 8 İllik Yubiley Posteri" class="intro-poster" id="introPoster" />
+      <div class="intro-poster-placeholder" id="introPosterPh">
+        <div class="iph-content">
+          <div class="iph-num">8</div>
+          <div class="iph-title">İLLİK YUBİLEY</div>
+          <div class="iph-sub">Aqrar Tədqiqatlar Mərkəzi</div>
+          <div class="iph-tag">2018 — 2026</div>
+        </div>
+        <div class="iph-leaves">
+          <span>🌿</span><span>🍃</span><span>🌱</span>
+          <span>🍃</span><span>🌿</span><span>🌱</span>
+        </div>
+      </div>
+      <div class="intro-particles" id="introParticles"></div>
+      <div class="intro-bottom-bar">
+        <span class="intro-bottom-text">Aşağıya davam edin</span>
+        <div class="scroll-indicator">
+          <div class="scroll-arrow"></div>
+          <div class="scroll-arrow delay1"></div>
+          <div class="scroll-arrow delay2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLAYD 1 — BAŞ DİREKTOR -->
+    <section class="slide slide-director" id="slide-1">
+      <div class="director-bg"></div>
+      <div class="director-glow"></div>
+      <div class="director-content">
+        <div class="director-badge">
+          <span class="badge-icon">🌿</span>
+          <span>Rəhbərlik</span>
+        </div>
+        <div class="director-card">
+          <div class="director-photo-wrap">
+            <div class="director-ring ring-1"></div>
+            <div class="director-ring ring-2"></div>
+            <div class="director-ring ring-3"></div>
+            <div class="director-photo-inner" id="directorPhotoInner">
+              <div class="ph-avatar">👤</div>
+            </div>
+          </div>
+          <div class="director-info">
+            <div class="director-title-label">Baş Direktor</div>
+            <h2 class="director-name" id="directorName">Ad Soyad</h2>
+            <p class="director-desc" id="directorDesc">
+              Aqrar Tədqiqatlar Mərkəzinin rəhbəri kimi, son 8 ildə elmə, innovasiyaya
+              və aqrar sahənin inkişafına sonsuz töhfə vermişdir.
+            </p>
+            <div class="director-stats">
+              <div class="stat-item">
+                <span class="stat-num" id="statYears">8</span>
+                <span class="stat-lbl">İl</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <span class="stat-num" id="statProjects">100+</span>
+                <span class="stat-lbl">Layihə</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <span class="stat-num" id="statStaff">50+</span>
+                <span class="stat-lbl">İşçi</span>
+              </div>
+            </div>
+            <blockquote class="director-quote" id="directorQuote">
+              "Gələcəyi birlikdə araşdırırıq, yaradırıq!"
+            </blockquote>
+          </div>
+        </div>
+      </div>
+      <div class="floating-leaves">
+        <span class="leaf l1">🍃</span><span class="leaf l2">🌱</span>
+        <span class="leaf l3">🍃</span><span class="leaf l4">🌿</span>
+        <span class="leaf l5">🍃</span>
+      </div>
+    </section>
+
+    <!-- SLAYD 2 — RƏHBƏR HEYƏT -->
+    <section class="slide slide-team" id="slide-2">
+      <div class="team-bg"></div>
+      <div class="team-header">
+        <div class="section-eyebrow">🏆 ATM Komandası</div>
+        <h2 class="section-title">Rəhbər Heyət</h2>
+        <p class="section-sub">8 il ərzində birlikdə böyüdük, inkişaf etdik</p>
+      </div>
+      <div class="team-grid" id="teamGrid"></div>
+    </section>
+
+    <!-- SLAYD 3 — ƏMƏKDAŞLAR -->
+    <section class="slide slide-staff" id="slide-3">
+      <div class="staff-bg"></div>
+      <div class="staff-header">
+        <div class="section-eyebrow">💚 Bizimlə 8 il</div>
+        <h2 class="section-title">Əməkdaşlarımız</h2>
+      </div>
+      <div class="staff-ticker-wrap">
+        <div class="staff-ticker" id="staffTicker"></div>
+      </div>
+      <div class="staff-ticker-wrap ticker-reverse-wrap">
+        <div class="staff-ticker ticker-reverse" id="staffTicker2"></div>
+      </div>
+    </section>
+
+    <!-- SLAYD 4 — FİNAL -->
+    <section class="slide slide-final" id="slide-4">
+      <div class="final-bg"></div>
+      <div class="final-glow"></div>
+      <div class="final-content">
+        <div class="final-logo">
+          <div class="logo-ring"></div>
+          <span class="logo-num">8</span>
+        </div>
+        <h1 class="final-title">Bu Gün Bizim Günümüzdür!</h1>
+        <p class="final-sub">
+          8 il ərzində Azərbaycanın aqrar elminin inkişafına verdiyimiz töhfə<br/>
+          bizim ən böyük qürurumuz, gücümüz və ilhamımızdır.
+        </p>
+        <div class="final-values">
+          <div class="val-item"><span class="val-icon">🔬</span><span class="val-text">Elm</span></div>
+          <div class="val-item"><span class="val-icon">💡</span><span class="val-text">İnnovasiya</span></div>
+          <div class="val-item"><span class="val-icon">🤝</span><span class="val-text">Əməkdaşlıq</span></div>
+          <div class="val-item"><span class="val-icon">📈</span><span class="val-text">İnkişaf</span></div>
+        </div>
+        <div class="final-hashtag">#ATM8il &nbsp;•&nbsp; atm.gov.az</div>
+        <div class="confetti-container" id="confetti"></div>
+      </div>
+      <div class="floating-leaves final-leaves">
+        <span class="leaf l1">🍃</span><span class="leaf l2">🌱</span>
+        <span class="leaf l3">🍃</span><span class="leaf l4">🌿</span>
+        <span class="leaf l5">🍃</span><span class="leaf l6">🌱</span>
+        <span class="leaf l7">🍃</span>
+      </div>
+    </section>
+
+  </div><!-- /slides-container -->
+
+  <script src="script.js"></script>
+</body>
+</html>

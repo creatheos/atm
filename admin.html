@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — ATM Yubiley Saytı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- ══ SIDEBAR ══════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🌿</div>
+      <div>
+        <div class="sidebar-logo-title">ATM Admin</div>
+        <div class="sidebar-logo-sub">8 İllik Yubiley</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-tab="dashboard">
+        <span class="nav-icon">🏠</span> Dashboard
+      </button>
+      <button class="nav-item" data-tab="intro">
+        <span class="nav-icon">🖼️</span> Giriş Slaydı
+      </button>
+      <button class="nav-item" data-tab="director">
+        <span class="nav-icon">👤</span> Baş Direktor
+      </button>
+      <button class="nav-item" data-tab="team">
+        <span class="nav-icon">🏆</span> Rəhbər Heyət
+      </button>
+      <button class="nav-item" data-tab="staff">
+        <span class="nav-icon">👥</span> Əməkdaşlar
+      </button>
+      <button class="nav-item" data-tab="settings">
+        <span class="nav-icon">⚙️</span> Parametrlər
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html" target="_blank" class="preview-btn">
+        <span>▶</span> Saytı Aç
+      </a>
+      <div class="sidebar-footer-info">ATM © 2026</div>
+    </div>
+  </aside>
+
+  <!-- ══ MAIN ═════════════════════════════════════════ -->
+  <main class="main-content">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="topbar-title" id="topbarTitle">Dashboard</h1>
+        <span class="topbar-sub">Aqrar Tədqiqatlar Mərkəzi — 8 İllik Yubiley</span>
+      </div>
+      <div class="topbar-right">
+        <div class="save-status" id="saveStatus"></div>
+        <button class="btn-save" id="globalSave" onclick="saveAll()">
+          💾 Yadda Saxla
+        </button>
+      </div>
+    </header>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ══ TAB: DASHBOARD ══════════════════════════════ -->
+    <div class="tab-content active" id="tab-dashboard">
+      <div class="dashboard-grid">
+        <div class="dash-card" onclick="switchTab('intro')">
+          <div class="dash-icon">🖼️</div>
+          <div class="dash-label">Giriş Slaydı</div>
+          <div class="dash-sub">Poster şəkli idarəet</div>
+        </div>
+        <div class="dash-card" onclick="switchTab('director')">
+          <div class="dash-icon">👤</div>
+          <div class="dash-label">Baş Direktor</div>
+          <div class="dash-sub">Ad, şəkil, statistika</div>
+        </div>
+        <div class="dash-card" onclick="switchTab('team')">
+          <div class="dash-icon">🏆</div>
+          <div class="dash-label">Rəhbər Heyət</div>
+          <div class="dash-sub" id="dash-team-count">0 nəfər</div>
+        </div>
+        <div class="dash-card" onclick="switchTab('staff')">
+          <div class="dash-icon">👥</div>
+          <div class="dash-label">Əməkdaşlar</div>
+          <div class="dash-sub" id="dash-staff-count">0 nəfər</div>
+        </div>
+        <div class="dash-card" onclick="switchTab('settings')">
+          <div class="dash-icon">⚙️</div>
+          <div class="dash-label">Parametrlər</div>
+          <div class="dash-sub">Auto-play & vaxt</div>
+        </div>
+        <div class="dash-card dash-card-preview" onclick="window.open('index.html','_blank')">
+          <div class="dash-icon">▶</div>
+          <div class="dash-label">Saytı Aç</div>
+          <div class="dash-sub">Yeni tabda bax</div>
+        </div>
+      </div>
+
+      <div class="dash-info-box">
+        <div class="dib-title">📋 Necə istifadə etməli?</div>
+        <ol class="dib-list">
+          <li>Sol menyudan bölmə seçin (məs. "Baş Direktor")</li>
+          <li>Məlumatları redaktə edin, şəkil yükləyin</li>
+          <li>Yuxarıdakı <strong>"💾 Yadda Saxla"</strong> düyməsini basın</li>
+          <li><strong>"Saytı Aç"</strong> ilə nəticəyə baxın</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ══ TAB: GİRİŞ SLAYDI ═══════════════════════════ -->
+    <div class="tab-content" id="tab-intro">
+      <div class="section-card">
+        <div class="sc-header">
+          <div class="sc-title">🖼️ Giriş Slaydı — Poster Şəkli</div>
+          <div class="sc-sub">Birinci slaydda göstəriləcək yubiley posteri</div>
+        </div>
+        <div class="photo-upload-zone" id="introUploadZone">
+          <div class="puz-preview" id="introPosterPreview">
+            <div class="puz-placeholder">
+              <div class="puz-icon">🖼️</div>
+              <div class="puz-text">Poster şəkli seçin</div>
+              <div class="puz-hint">PNG, JPG — Max 10MB</div>
+            </div>
+          </div>
+          <div class="puz-actions">
+            <label class="btn-upload" for="introPhotoInput">📁 Şəkil Seç</label>
+            <input type="file" id="introPhotoInput" accept="image/*" style="display:none" onchange="handleIntroPhoto(this)" />
+            <button class="btn-remove" onclick="removeIntroPhoto()">🗑 Sil</button>
+          </div>
+          <div class="puz-note">
+            💡 Şəkil seçməsəniz, <code>images/anniversary-poster.jpg</code> faylı istifadə olunacaq
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TAB: DİREKTOR ═══════════════════════════════ -->
+    <div class="tab-content" id="tab-director">
+      <div class="two-col">
+
+        <div class="section-card">
+          <div class="sc-header">
+            <div class="sc-title">📸 Direktor Şəkli</div>
+          </div>
+          <div class="photo-upload-zone small">
+            <div class="puz-preview circle" id="directorPhotoPreview">
+              <div class="puz-placeholder">
+                <div class="puz-icon">👤</div>
+                <div class="puz-text">Şəkil seçin</div>
+              </div>
+            </div>
+            <div class="puz-actions">
+              <label class="btn-upload" for="directorPhotoInput">📁 Şəkil Seç</label>
+              <input type="file" id="directorPhotoInput" accept="image/*" style="display:none" onchange="handleDirectorPhoto(this)" />
+              <button class="btn-remove" onclick="removeDirectorPhoto()">🗑 Sil</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="sc-header">
+            <div class="sc-title">✏️ Direktor Məlumatları</div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group full">
+              <label>Ad Soyad</label>
+              <input type="text" id="dir-name" placeholder="Məs: Əli Həsənov" />
+            </div>
+            <div class="form-group full">
+              <label>Qısa təsvir</label>
+              <textarea id="dir-desc" rows="3" placeholder="Direktor haqqında qısa məlumat..."></textarea>
+            </div>
+            <div class="form-group full">
+              <label>Sitat / Motto</label>
+              <input type="text" id="dir-quote" placeholder='Məs: "Gələcəyi birlikdə yaradırıq!"' />
+            </div>
+            <div class="form-group">
+              <label>İl statistikası</label>
+              <input type="text" id="dir-stat-years" placeholder="8" />
+            </div>
+            <div class="form-group">
+              <label>Layihə sayı</label>
+              <input type="text" id="dir-stat-projects" placeholder="100+" />
+            </div>
+            <div class="form-group">
+              <label>İşçi sayı</label>
+              <input type="text" id="dir-stat-staff" placeholder="50+" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══ TAB: KOMANDA ════════════════════════════════ -->
+    <div class="tab-content" id="tab-team">
+      <div class="section-card">
+        <div class="sc-header">
+          <div class="sc-title">🏆 Rəhbər Heyət</div>
+          <button class="btn-add" onclick="addTeamMember()">+ Əlavə et</button>
+        </div>
+        <div class="members-list" id="teamList"></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB: ƏMƏKDAŞLAR ════════════════════════════ -->
+    <div class="tab-content" id="tab-staff">
+      <div class="section-card">
+        <div class="sc-header">
+          <div class="sc-title">👥 Əməkdaşlar</div>
+          <button class="btn-add" onclick="addStaffMember()">+ Əlavə et</button>
+        </div>
+        <div class="members-list staff-list" id="staffList"></div>
+      </div>
+    </div>
+
+    <!-- ══ TAB: PARAMETRLƏR ════════════════════════════ -->
+    <div class="tab-content" id="tab-settings">
+      <div class="section-card">
+        <div class="sc-header">
+          <div class="sc-title">⚙️ Parametrlər</div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>Auto-play rejimi</label>
+            <div class="toggle-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="set-autoplay" />
+                <span class="toggle-slider"></span>
+              </label>
+              <span class="toggle-label">Avtomatik növbəti slayd keçidi</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Slayd vaxtı (saniyə)</label>
+            <div class="input-with-unit">
+              <input type="number" id="set-interval" min="3" max="60" placeholder="10" />
+              <span class="unit">san</span>
+            </div>
+            <div class="form-hint">Hər slayd neçə saniyə göstərilsin (3–60)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card danger-zone">
+        <div class="sc-header">
+          <div class="sc-title">⚠️ Məlumatları Sıfırla</div>
+          <div class="sc-sub">Bütün dəyişikliklər silinəcək</div>
+        </div>
+        <button class="btn-danger" onclick="confirmReset()">🗑 Bütün Məlumatları Sıfırla</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- CONFIRM MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-icon">⚠️</div>
+      <div class="modal-title">Əminsiniz?</div>
+      <div class="modal-body">Bütün məlumatlar silinəcək və ilkin vəziyyətə qayıdacaq. Bu əməliyyat geri alına bilməz.</div>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModal()">Xeyr, ləğv et</button>
+        <button class="btn-confirm" onclick="resetAll()">Bəli, sıfırla</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
